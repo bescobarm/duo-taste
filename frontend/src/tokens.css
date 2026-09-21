@@ -1,0 +1,64 @@
+/* DuoTaste design system, v2. Generated from the canvas's ds/duotaste/tokens.json.
+   Light values on :root, dark values swapped under prefers-color-scheme. */
+:root {
+  --surface-100: #ffffff;
+  --surface-200: #eef1f5;
+  --surface-300: #dde2e9;
+  --border-200: #7c8b96;
+  --ink-900: #16211f;
+  --ink-600: #4c5a5e;
+
+  --cyan-300: #7ee0ef;
+  --on-cyan: #0b2b30;
+  --teal-500: #23a4ab;
+  --on-teal: #04262a;
+  --teal-700: #0f6f74;
+  --amber-400: #fab242;
+  --on-amber: #3a1f02;
+  --rust-600: #bf5709;
+  --on-rust: #ffffff;
+  --rust-700: #9c4506;
+
+  --focus-ring: var(--teal-700);
+  --score-high: var(--teal-500);
+  --score-mid: var(--amber-400);
+  --score-low: var(--rust-600);
+  --pin-saved: var(--cyan-300);
+  --map-canvas: var(--surface-300);
+  --map-route: var(--teal-700);
+
+  --font-sans: ui-sans-serif, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --surface-100: #101a1c;
+    --surface-200: #172427;
+    --surface-300: #1f3034;
+    --border-200: #5c757c;
+    --ink-900: #eef4f5;
+    --ink-600: #a9bcbf;
+
+    --teal-500: #2fc0c8;
+    --teal-700: #7fd9de;
+    --rust-600: #d96a12;
+    --on-rust: #241100;
+    --rust-700: #f5a85f;
+
+    color-scheme: dark;
+  }
+}
