@@ -35,6 +35,7 @@ export interface NewPlace {
   address: string
   lat: number
   lng: number
+  rating: NewRating
 }
 
 export interface NewRating {

@@ -53,7 +53,8 @@ func (m *Memory) Get(ctx context.Context, id string) (model.Place, error) {
 	return place, nil
 }
 
-// Create stores a new place, assigning its id and creation time.
+// Create stores a new place, assigning ids and creation times to it and to any
+// ratings it arrives with.
 func (m *Memory) Create(ctx context.Context, place model.Place) (model.Place, error) {
 	m.mu.Lock()
 	defer m.mu.Unlock()
@@ -62,6 +63,11 @@ func (m *Memory) Create(ctx context.Context, place model.Place) (model.Place, er
 	place.CreatedAt = time.Now().UTC()
 	if place.Ratings == nil {
 		place.Ratings = []model.Rating{}
+	}
+	for i := range place.Ratings {
+		place.Ratings[i].ID = NewID()
+		place.Ratings[i].PlaceID = place.ID
+		place.Ratings[i].CreatedAt = place.CreatedAt
 	}
 
 	m.places[place.ID] = place

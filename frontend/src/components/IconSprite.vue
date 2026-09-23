@@ -4,7 +4,7 @@
 </script>
 
 <template>
-  <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+  <svg width="0" height="0" class="absolute" aria-hidden="true" focusable="false">
     <symbol id="ic-pizza" viewBox="0 0 24 24">
       <path d="M12 3.2 4.3 19.4a17.6 17.6 0 0 0 15.4 0z" />
       <circle cx="10" cy="11.4" r="1.1" />
@@ -53,6 +53,11 @@
     <symbol id="ic-pin" viewBox="0 0 24 24">
       <path d="M12 21s6.6-6.1 6.6-10.4A6.6 6.6 0 0 0 5.4 10.6C5.4 14.9 12 21 12 21z" />
       <circle cx="12" cy="10.4" r="2.4" />
+    </symbol>
+    <symbol id="ic-locate" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="6.4" />
+      <circle cx="12" cy="12" r="2" />
+      <path d="M12 2.8v3M12 18.2v3M2.8 12h3M18.2 12h3" />
     </symbol>
   </svg>
 </template>
