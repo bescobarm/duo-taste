@@ -10,7 +10,7 @@ import (
 
 // NewRouter wires every route and the middleware chain around them.
 func NewRouter(places store.PlaceStore, cfg config.Config, logger *slog.Logger) http.Handler {
-	handler := placeHandler{places: places}
+	handler := placeHandler{places: places, logger: logger}
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /health", health)

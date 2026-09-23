@@ -1,0 +1,164 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+/* The phone layout, as max-width so 900px itself still counts as a phone
+   (Tailwind's max-[900px] stops just below it). */
+@custom-variant phone (@media (max-width: 900px));
+@custom-variant narrow (@media (max-width: 380px));
+
+/* The tokens stay plain custom properties in tokens.css, so the dark-mode swap
+   keeps working. inline makes each utility read the token directly, and
+   reference stops Tailwind from redeclaring the same-named ones (radius, font). */
+@theme inline reference {
+  --color-*: initial;
+  --color-surface-100: var(--surface-100);
+  --color-surface-200: var(--surface-200);
+  --color-surface-300: var(--surface-300);
+  --color-border-200: var(--border-200);
+  --color-ink-900: var(--ink-900);
+  --color-ink-600: var(--ink-600);
+  --color-cyan-300: var(--cyan-300);
+  --color-on-cyan: var(--on-cyan);
+  --color-teal-500: var(--teal-500);
+  --color-on-teal: var(--on-teal);
+  --color-teal-700: var(--teal-700);
+  --color-amber-400: var(--amber-400);
+  --color-on-amber: var(--on-amber);
+  --color-rust-600: var(--rust-600);
+  --color-on-rust: var(--on-rust);
+  --color-rust-700: var(--rust-700);
+  --color-focus-ring: var(--focus-ring);
+  --color-score-high: var(--score-high);
+  --color-score-mid: var(--score-mid);
+  --color-score-low: var(--score-low);
+  --color-pin-saved: var(--pin-saved);
+  --color-map-canvas: var(--map-canvas);
+  --color-map-route: var(--map-route);
+
+  /* One spacing step is --space-1 (4px): p-1, p-2, p-4, p-6 and p-10 are
+     --space-1 to --space-5. */
+  --spacing: var(--space-1);
+
+  --radius-*: initial;
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-pill: var(--radius-pill);
+
+  --font-*: initial;
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+/* The type scale in px, like the rest of the design system. */
+@theme {
+  --text-*: initial;
+  --text-display: 48px;
+  --text-display--line-height: 50px;
+  --text-display--font-weight: 700;
+  --text-display--letter-spacing: -0.02em;
+  --text-heading-m: 20px;
+  --text-heading-m--line-height: 26px;
+  --text-heading-m--font-weight: 600;
+  --text-body: 16px;
+  --text-body--line-height: 24px;
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 20px;
+  --text-caption: 13px;
+  --text-caption--line-height: 18px;
+  --text-caption--font-weight: 500;
+  --text-caption--letter-spacing: 0.02em;
+
+  --tracking-section: 0.06em;
+
+  --shadow-pin: 0 1px 4px rgb(11 43 48 / 25%);
+}
+
+@layer base {
+  html,
+  body,
+  #app {
+    height: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--ink-900);
+    background: var(--surface-100);
+  }
+
+  a {
+    color: var(--teal-700);
+  }
+
+  a:hover {
+    color: var(--rust-700);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+
+  /* Preflight fades placeholders from the text color; keep the browser's gray. */
+  ::placeholder {
+    color: revert;
+  }
+}
+
+/* Leaflet's own controls, restyled to the design system. These target DOM that
+   Leaflet generates, and stay unlayered so they can beat leaflet.css, which
+   main.ts loads just before this file. */
+.leaflet-container {
+  background: var(--map-canvas);
+}
+
+.leaflet-touch .leaflet-bar,
+.leaflet-bar {
+  border: 1px solid var(--border-200);
+  border-radius: var(--radius-md);
+  box-shadow: none;
+}
+
+.leaflet-bar a,
+.leaflet-bar a:hover {
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
+  line-height: 44px;
+  color: var(--ink-900);
+  background: var(--surface-100);
+  border-bottom-color: var(--surface-300);
+}
+
+.leaflet-bar a:first-child {
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.leaflet-bar a:last-child {
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+.leaflet-bar a:hover {
+  background: var(--surface-200);
+}
+
+.leaflet-control-attribution {
+  padding: 2px var(--space-2);
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--ink-600);
+  background: var(--surface-100);
+  border-radius: var(--radius-sm);
+}
+
+.leaflet-control-attribution a {
+  color: var(--teal-700);
+}
+
+/* Clears the search toolbar that floats over the top of the map. */
+.leaflet-top.leaflet-right {
+  top: 76px;
+}

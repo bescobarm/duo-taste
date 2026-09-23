@@ -5,10 +5,6 @@ import (
 	"net/http"
 )
 
-type errorBody struct {
-	Error string `json:"error"`
-}
-
 func writeJSON(w http.ResponseWriter, status int, payload any) {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(status)
@@ -22,8 +18,4 @@ func writeJSON(w http.ResponseWriter, status int, payload any) {
 		// The status line is already out; nothing left to do but stop writing.
 		return
 	}
-}
-
-func writeError(w http.ResponseWriter, status int, message string) {
-	writeJSON(w, status, errorBody{Error: message})
 }
